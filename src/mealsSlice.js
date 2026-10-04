@@ -1,17 +1,45 @@
-// mealsSlice.js
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 export const mealsSlice = createSlice({
-  name: 'meals',
+  name: "meals",
+
   initialState: [
-   
+    {
+      name: "Breakfast",
+      cost: 50,
+      selected: false
+    },
+    {
+      name: "Lunch",
+      cost: 60,
+      selected: false
+    },
+    {
+      name: "High Tea",
+      cost: 25,
+      selected: false
+    },
+    {
+      name: "Dinner",
+      cost: 70,
+      selected: false
+    }
   ],
+
   reducers: {
     toggleMealSelection: (state, action) => {
-    },
-  },
+      const index = action.payload;
+
+      if (state[index]) {
+        state[index].selected =
+          !state[index].selected;
+      }
+    }
+  }
 });
 
-export const { toggleMealSelection } = mealsSlice.actions;
+export const {
+  toggleMealSelection
+} = mealsSlice.actions;
 
 export default mealsSlice.reducer;
